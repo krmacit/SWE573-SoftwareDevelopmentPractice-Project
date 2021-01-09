@@ -8,44 +8,54 @@ def auth():
            "%2F4%3Du3f9LYyWBxQJMNXDecJtsSlL8qSCPwbF9YyvTZHMfDtM2hQoUB"
 
 
+def get_base_url():
+    return "https://api.twitter.com/2/tweets/search/recent"
+
+
 def create_headers(bearer_token):
-    headers = {"Authorization": "Bearer {}".format(bearer_token)}
+    headers = {
+        "content-type": "application/json",
+        "Authorization": "Bearer {}".format(bearer_token)
+    }
     return headers
 
 
-def get_rules(headers, bearer_token):
-    response = requests.get(
-        "https://api.twitter.com/2/tweets/search/stream/rules", headers=headers
-    )
-    if response.status_code != 200:
-        raise Exception(
-            "Cannot get rules (HTTP {}): {}".format(response.status_code, response.text)
-        )
-    print(json.dumps(response.json()))
-    return response.json()
+def create_params():
+    params = {
+        'max_results': 100,
+        'query': 'corona pandemic is:retweet lang:en has:mentions',
+        'expansions': 'referenced_tweets.id,referenced_tweets.id.author_id',
+        'tweet.fields': 'public_metrics'
+    }
+    return params
 
 
-def create_query():
-    query = "query=COVID&expansions=author_id,geo.place_id"
-    return query
-
-
-def create_fields():
-    field = "user.fields=location&tweet.fields=text,geo,public_metrics,referenced_tweets"
-    return field
-
-
-def get_stream(headers, query, fields):
-    response = requests.get(
-        "https://api.twitter.com/2/tweets/search/recent?" + query + "&" + fields, headers=headers, stream=True,
-    )
-    print(response.status_code)
+def get_stream(base_url, headers, params):
+    response = requests.get(base_url, headers=headers, params=params)
     if response.status_code != 200:
         raise Exception(
             "Cannot get stream (HTTP {}): {}".format(
                 response.status_code, response.text
             )
         )
+    response_json = response.json()
+    print(response)
+    while response_json['meta']['next_token'] is not None:
+        params['next_token'] = response_json['meta']['next_token']
+        response = requests.get(
+            base_url, headers=headers, params=params
+        )
+        if response.status_code != 200:
+            raise Exception(
+                "Cannot get stream (HTTP {}): {}".format(
+                    response.status_code, response.text
+                )
+            )
+        response_json = response.json()
+        print(response)
+
+
+def handle_response(response):
     for response_line in response.iter_lines():
         if response_line:
             json_response = json.loads(response_line)
@@ -53,8 +63,8 @@ def get_stream(headers, query, fields):
 
 
 def main():
+    base_url = get_base_url()
     bearer_token = auth()
     headers = create_headers(bearer_token)
-    query = create_query()
-    fields = create_fields()
-    get_stream(headers, query, fields)
+    params = create_params()
+    get_stream(base_url, headers, params)
