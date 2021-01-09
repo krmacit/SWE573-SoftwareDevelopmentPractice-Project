@@ -25,7 +25,7 @@ def create_params():
         'max_results': 100,
         'query': 'corona pandemic is:retweet lang:en has:mentions',
         'expansions': 'referenced_tweets.id,referenced_tweets.id.author_id',
-        'tweet.fields': 'public_metrics,geo',
+        'tweet.fields': 'public_metrics,geo,context_annotations,entities',
         'user.fields': 'location'
     }
     return params
