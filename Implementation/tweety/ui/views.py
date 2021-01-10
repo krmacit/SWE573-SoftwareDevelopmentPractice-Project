@@ -3,10 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
+from ui.services import generate_worldcloud
+
 
 @login_required
 def home(request):
-    return render(request, "registration/success.html", {})
+    generate_worldcloud()
+    return render(request, "registration/home.html", {})
 
 
 def register(request):
