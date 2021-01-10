@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ui'
+    'ui',
+    'twitter'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'tweety.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tweety.ui',
+        'NAME': 'tweety_db',
         'USER': 'postgres',
         'PASSWORD': '899091',
         'HOST': '127.0.0.1',
