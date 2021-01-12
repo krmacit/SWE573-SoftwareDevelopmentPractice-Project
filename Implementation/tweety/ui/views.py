@@ -1,15 +1,11 @@
+from collections import Counter
+
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from ui.services import generate_worldcloud
-
-
-@login_required
-def home(request):
-    generate_worldcloud()
-    return render(request, "registration/home.html", {})
+from twitter.models import Entities
 
 
 def register(request):
@@ -25,3 +21,23 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+@login_required
+def home(request):
+    labels = []
+    data = []
+
+    values = Entities.objects.values("normalized_text")
+    result = [value["normalized_text"] for value in values]
+
+    counter = Counter(result)
+
+    for k, v in counter.most_common(20):
+        labels.append(k)
+        data.append(v)
+
+    return render(request, 'registration/home.html', {
+        'labels': labels,
+        'data': data,
+    })

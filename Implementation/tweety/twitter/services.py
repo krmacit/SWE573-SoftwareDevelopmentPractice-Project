@@ -23,7 +23,7 @@ def create_headers(bearer_token):
 def create_params():
     params = {
         'max_results': 100,
-        'query': 'corona pandemic is:retweet lang:en has:mentions',
+        'query': 'pandemic is:retweet lang:en has:mentions',
         'expansions': 'referenced_tweets.id,referenced_tweets.id.author_id',
         'tweet.fields': 'public_metrics,geo,context_annotations,entities',
         'user.fields': 'location'
@@ -74,7 +74,8 @@ def handle_response(response_json):
             quote_count=int(tweet['public_metrics']['quote_count']),
             reply_count=int(tweet['public_metrics']['reply_count']),
             retweet_count=int(tweet['public_metrics']['retweet_count']),
-            text=tweet['text'][0:399]
+            text=tweet['text'][0:399],
+            geo=tweet['geo']['place_id'][0:49] if 'geo' in tweet else None
         )
         tweet_row.save()
         if 'context_annotations' in tweet:
