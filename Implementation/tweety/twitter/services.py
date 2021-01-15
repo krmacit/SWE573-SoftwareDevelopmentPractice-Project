@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 
 from twitter.models import TwitterUser, ContextAnnotation, Tweet, Entities
@@ -23,10 +25,11 @@ def create_headers(bearer_token):
 def create_params():
     params = {
         'max_results': 100,
-        'query': 'pandemic is:retweet lang:en has:mentions',
-        'expansions': 'referenced_tweets.id,referenced_tweets.id.author_id',
-        'tweet.fields': 'public_metrics,geo,context_annotations,entities',
-        'user.fields': 'location'
+        'query': 'corona pandemic is:retweet lang:en has:mentions',
+        'expansions': 'referenced_tweets.id,referenced_tweets.id.author_id,geo.place_id',
+        'tweet.fields': 'public_metrics,geo,context_annotations,entities,created_at',
+        'user.fields': 'location',
+        'place.fields': 'country_code'
     }
     return params
 
@@ -42,9 +45,9 @@ def get_stream(base_url, headers, params):
     response_json = response.json()
     handle_response(response_json)
     iteration = 0
-    while 'next_token' in response_json['meta'] and response_json['meta']['next_token'] is not None and iteration < 5:
+    while 'next_token' in response_json['meta'] and response_json['meta']['next_token'] is not None and iteration < 1:
         print(response_json['meta'])
-        # iteration += 1
+        iteration += 1
         params['next_token'] = response_json['meta']['next_token']
         response = requests.get(
             base_url, headers=headers, params=params
@@ -75,6 +78,7 @@ def handle_response(response_json):
             reply_count=int(tweet['public_metrics']['reply_count']),
             retweet_count=int(tweet['public_metrics']['retweet_count']),
             text=tweet['text'][0:399],
+            date=datetime.strptime(tweet["created_at"].split('T')[0], '%Y-%m-%d').date(),
             geo=tweet['geo']['place_id'][0:49] if 'geo' in tweet else None
         )
         tweet_row.save()

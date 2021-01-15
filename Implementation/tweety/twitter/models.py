@@ -10,6 +10,7 @@ class Tweet(models.Model):
     retweet_count = models.IntegerField()
     text = models.CharField(max_length=400)
     geo = models.CharField(null=True, max_length=50)
+    date = models.DateField()
 
 
 class TwitterUser(models.Model):
