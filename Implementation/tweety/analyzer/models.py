@@ -11,3 +11,10 @@ class TweetSummary(models.Model):
     semantic_compound = models.DecimalField(null=True, max_digits=6, decimal_places=4)
     location = models.CharField(max_length=5, null=True)
     country_code = models.CharField(null=True, max_length=3)
+
+
+class FinalTable(models.Model):
+    country_code = models.CharField(null=True, max_length=3)
+    entity = models.CharField(max_length=100)
+    date = models.DateField()
+    semantic_compound = models.DecimalField(null=True, max_digits=6, decimal_places=4)
