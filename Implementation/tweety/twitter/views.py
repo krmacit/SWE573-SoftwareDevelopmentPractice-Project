@@ -10,4 +10,4 @@ def start_twitter_calls(request):
 
 
 def stop_twitter_calls(request):
-    return HttpResponse("Calls stopped..")
+    return HttpResponse("Calls will be stopped..")

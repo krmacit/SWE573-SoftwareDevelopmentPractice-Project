@@ -3,5 +3,6 @@ from django.urls import path
 from analyzer import views
 
 urlpatterns = [
-    path('start/', views.analyzer, name='analyzer')
+    path('addtosummary/', views.analyzer, name='analyzer'),
+    path('addcountry/', views.add_country, name='add_country')
 ]
