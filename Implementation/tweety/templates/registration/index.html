@@ -54,7 +54,8 @@
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">HeatMap Graph</h2>
-        <canvas class="heat-map"></canvas>
+        <div id="occurrence_graph_container" class="graphs" height=2000></div>
+        <div id="semantic_graph_container" class="graphs"></div>
     </div>
 </div>
 
@@ -62,5 +63,35 @@
 <script src="../../static/main/js/popper.js"></script>
 <script src="../../static/main/js/bootstrap.min.js"></script>
 <script src="../../static/main/js/main.js"></script>
+<script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-heatmap.min.js"></script>
+<script>
+    anychart.onDocumentReady(function () {
+        // create the data
+        var data = {{ occurrence_data|safe }};
+
+        // create the chart and set the data
+        chart = anychart.heatMap(data);
+
+        // set the chart title
+        chart.title("Entity Occurrence");
+
+        // create and configure the color scale.
+        var customColorScale = anychart.scales.linearColor();
+        customColorScale.colors(["#ace8d4", "#00726A"]);
+
+        // set the color scale as the color scale of the chart
+        chart.colorScale(customColorScale);
+
+        chart.height(2000)
+
+        // set the container id
+        chart.container("occurrence_graph_container");
+
+        // initiate drawing the chart
+        chart.draw();
+
+    });
+</script>
 </body>
 </html>

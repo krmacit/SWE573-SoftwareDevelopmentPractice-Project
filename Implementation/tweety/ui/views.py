@@ -1,11 +1,9 @@
-from collections import Counter
-
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from twitter.models import Entities
+from analyzer.models import FinalTableAll
 
 
 def register(request):
@@ -25,21 +23,15 @@ def register(request):
 
 @login_required
 def home(request):
-    labels = []
-    data = []
-
-    values = Entities.objects.values("normalized_text")
-    result = [value["normalized_text"] for value in values]
-
-    counter = Counter(result)
-
-    for k, v in counter.most_common(20):
-        labels.append(k)
-        data.append(v)
+    semantic_data = []
+    occurrence_data = []
+    for row in FinalTableAll.objects.all().order_by('date', 'tweet_count'):
+        semantic_data.append({'x': row.date, 'y': row.entity, 'heat': row.semantic_compound})
+        occurrence_data.append({'x': row.date, 'y': row.entity, 'heat': row.tweet_count})
 
     return render(request, 'registration/index.html', {
-        'labels': labels,
-        'data': data,
+        'semantic_data': semantic_data,
+        'occurrence_data': occurrence_data
     })
 
 

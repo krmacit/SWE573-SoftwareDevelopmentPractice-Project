@@ -4,6 +4,10 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+html {
+    height: 100%;
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -8294,12 +8298,9 @@ a[data-toggle="collapse"] {
     display: none; } }
 
 #content {
+  position: absolute;
   width: 100%;
-  padding: 0;
-  min-height: 100vh;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s; }
+  height: 50px;}
 
 .btn.btn-primary {
   background: #494ca2;
@@ -8337,3 +8338,9 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   background: #5356b1; }
+
+.graphs {
+  align-content: center;
+  background: #1b1e21;
+  height: 80%;
+}
