@@ -26,7 +26,7 @@ def home(request):
     semantic_data = []
     occurrence_data = []
     for row in FinalTableAll.objects.all().order_by('date', 'tweet_count'):
-        semantic_data.append({'x': row.date, 'y': row.entity, 'heat': row.semantic_compound})
+        semantic_data.append({'x': row.date, 'y': row.entity, 'heat': str(row.semantic_compound)})
         occurrence_data.append({'x': row.date, 'y': row.entity, 'heat': row.tweet_count})
 
     return render(request, 'registration/index.html', {

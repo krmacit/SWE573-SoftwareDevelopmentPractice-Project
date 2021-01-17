@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6c0d4807-c54a-49ed-9eb5-fdd4c2cb2b62" name="Default Changelist" comment="Front end is refactored and finished..">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/postgres.edMnLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/tweety_db.9Rd4Cg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/tweety_db.9Rd4Cg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/tweety_db.9Rd4Cg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/301fd43e-02c8-47dd-9ef5-e70d7b0699d6/storage_v2/_src_/database/tweety_db.9Rd4Cg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1mnb2Br6RqjrkWsFOxHXuNf2tgS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/registration" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/registration" />
+      <recent name="$PROJECT_DIR$/static/main" />
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/static/scripts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/css" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="tweety" type="Python.DjangoServer" factoryName="Django server">
+      <module name="tweety" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="tweety.settings" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="3000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c0d4807-c54a-49ed-9eb5-fdd4c2cb2b62" name="Default Changelist" comment="" />
+      <created>1610132093973</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610132093973</updated>
+      <workItem from="1610132095665" duration="2668000" />
+      <workItem from="1610172752111" duration="1808000" />
+      <workItem from="1610222339316" duration="10000" />
+      <workItem from="1610225691205" duration="7108000" />
+      <workItem from="1610263623609" duration="4087000" />
+      <workItem from="1610268746320" duration="2030000" />
+      <workItem from="1610278890396" duration="10744000" />
+      <workItem from="1610293367480" duration="4513000" />
+      <workItem from="1610307511691" duration="4000" />
+      <workItem from="1610311798177" duration="3963000" />
+      <workItem from="1610346259326" duration="3000" />
+      <workItem from="1610361778972" duration="678000" />
+      <workItem from="1610392198183" duration="4518000" />
+      <workItem from="1610397144102" duration="3427000" />
+      <workItem from="1610431360348" duration="617000" />
+      <workItem from="1610439267598" duration="616000" />
+      <workItem from="1610466565908" duration="4185000" />
+      <workItem from="1610471362389" duration="771000" />
+      <workItem from="1610480802206" duration="169000" />
+      <workItem from="1610719067866" duration="1000" />
+      <workItem from="1610721772051" duration="4000" />
+      <workItem from="1610735410787" duration="10430000" />
+      <workItem from="1610790398349" duration="49895000" />
+    </task>
+    <task id="LOCAL-00001" summary="Twitter API call methods are refactored">
+      <created>1610226040119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610226040119</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Twitter API call, tweet and user user fields are refactored.">
+      <created>1610227752670</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610227752670</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Models for Twitter API data is collected.">
+      <created>1610232877394</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610232877394</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Twitter Calls are saved to DB as Twit, User, Entity and Context Annotation.">
+      <created>1610297178726</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610297178726</updated>
+    </task>
+    <task id="LOCAL-00005" summary="In the last call of response_json, the control is adjusted so that error due to next_token not found in meta is blocked">
+      <created>1610297409154</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610297409154</updated>
+    </task>
+    <task id="LOCAL-00006" summary="With entities, wordcloud is created.">
+      <created>1610315746618</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610315746618</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Basic home page with pie chart is added to project.">
+      <created>1610470223381</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610470223381</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created date is added to twitter data.">
+      <created>1610742252097</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610742252097</updated>
+    </task>
+    <task id="LOCAL-00009" summary="New analyzer app added to project for analyzing and creating summary table from twitter data.">
+      <created>1610742304764</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1610742304764</updated>
+    </task>
+    <task id="LOCAL-00010" summary="TweetSummary Table is added which will be used in creating final table.">
+      <created>1610806240521</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610806240521</updated>
+    </task>
+    <task id="LOCAL-00011" summary="FinalTable Model which is going to used in front-end is created.">
+      <created>1610816961475</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1610816961475</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Final Table is created without country selection.">
+      <created>1610827823963</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610827823963</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Front end is refactored and finished..">
+      <created>1610903731126</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1610903731126</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Basic Heat Map is added.">
+      <created>1610914067115</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610914067115</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Twitter API call methods are refactored" />
+    <MESSAGE value="Twitter API call, tweet and user user fields are refactored." />
+    <MESSAGE value="Models for Twitter API data is collected." />
+    <MESSAGE value="Twitter Calls are saved to DB as Twit, User, Entity and Context Annotation." />
+    <MESSAGE value="In the last call of response_json, the control is adjusted so that error due to next_token not found in meta is blocked" />
+    <MESSAGE value="With entities, wordcloud is created." />
+    <MESSAGE value="Basic home page with pie chart is added to project." />
+    <MESSAGE value="Created date is added to twitter data." />
+    <MESSAGE value="New analyzer app added to project for analyzing and creating summary table from twitter data." />
+    <MESSAGE value="TweetSummary Table is added which will be used in creating final table." />
+    <MESSAGE value="FinalTable Model which is going to used in front-end is created." />
+    <MESSAGE value="Final Table is created without country selection." />
+    <MESSAGE value="Front end is refactored and finished.." />
+    <MESSAGE value="Basic Heat Map is added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic Heat Map is added." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

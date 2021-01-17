@@ -68,30 +68,119 @@
 <script>
     anychart.onDocumentReady(function () {
         // create the data
-        var data = {{ occurrence_data|safe }};
+        var occ_data = {{ occurrence_data|safe }};
+        drawChart(occ_data, "occurrence_graph_container", true)
 
-        // create the chart and set the data
-        chart = anychart.heatMap(data);
 
-        // set the chart title
-        chart.title("Entity Occurrence");
+        var sem_data = {{ semantic_data|safe }};
+        drawChart(sem_data, "semantic_graph_container", false)
 
-        // create and configure the color scale.
-        var customColorScale = anychart.scales.linearColor();
-        customColorScale.colors(["#ace8d4", "#00726A"]);
+    });
 
-        // set the color scale as the color scale of the chart
-        chart.colorScale(customColorScale);
+    function drawChart(data, id, type) {
+        var chart = anychart.heatMap(data);
+
+        var colorScale = anychart.scales.ordinalColor();
+        // set color for all points
+        colorScale.ranges([
+            {less: 0.35, color: '#e3f2fd'},
+            {from: 0.35, to: 0.45, color: '#D3EDFC'},
+            {from: 0.45, to: 0.5, color: '#BEE7FC'},
+            {from: 0.5, to: 0.55, color: '#aee2fb'},
+            {from: 0.55, to: 0.6, color: '#B3B0D3'},
+            {from: 0.6, to: 0.65, color: '#B691BB'},
+            {from: 0.65, to: 0.7, color: '#B973A3'},
+            {from: 0.7, to: 0.75, color: '#BC558B'},
+            {from: 0.75, to: 0.8, color: '#BF3673'},
+            {greater: 0.8, color: '#c2185b'}
+        ]);
+        chart.colorScale(colorScale);
+
+        // Sets selection mode for single selection
+        chart.interactivity().selectionMode('none');
+
+        chart.padding([10, 20, 10, 20]);
+
+        if (type) {
+            chart
+                .title()
+                .useHtml(true)
+                .enabled(true)
+                .padding([0, 0, 10, 5])
+                .align('left')
+                .text(
+                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Daily Counts)</span>'
+                );
+        } else {
+            chart
+                .title()
+                .useHtml(true)
+                .enabled(true)
+                .padding([0, 0, 10, 5])
+                .align('left')
+                .text(
+                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Semantic Result)</span>'
+                );
+        }
+
+        // Sets chart labels
+        {#chart#}
+        {#    .labels()#}
+        {#    .enabled(true)#}
+        {#    .maxFontSize(14)#}
+        {#    .format(function () {#}
+        {#        return this.x + this.y + this.getData('symbol');#}
+        {#    });#}
+
+        // Turns off axes
+        chart
+            .yAxis(null)
+            .xAxis(null)
+            // Sets chart and hover chart settings
+            .stroke('#fff');
+        chart
+            .hovered()
+            .stroke('6 #fff')
+            .fill('#545f69')
+            .labels({fontColor: '#fff'});
+
+        // Sets legend
+        chart
+            .legend()
+            .enabled(true)
+            .align('top')
+            .position('right')
+            .itemsLayout('vertical')
+            .padding([2, 10, 0, 20]);
+
+        // Sets tooltip
+        if (type) {
+            chart
+                .tooltip()
+                .titleFormat(function () {
+                    return this.y;
+                })
+                .format(function () {
+                    return 'Count: ' + this.heat;
+                });
+        } else {
+            chart
+                .tooltip()
+                .titleFormat(function () {
+                    return this.y;
+                })
+                .format(function () {
+                    return 'Result: ' + this.heat;
+                });
+        }
+
 
         chart.height(2000)
 
-        // set the container id
-        chart.container("occurrence_graph_container");
-
-        // initiate drawing the chart
+        chart.container(id);
         chart.draw();
-
-    });
+    }
 </script>
+<x>x</x>
 </body>
 </html>
