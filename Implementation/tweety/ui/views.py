@@ -37,7 +37,22 @@ def home(request):
         labels.append(k)
         data.append(v)
 
-    return render(request, 'registration/home.html', {
+    return render(request, 'registration/index.html', {
         'labels': labels,
         'data': data,
     })
+
+
+@login_required
+def country_page(request):
+    return render(request, 'registration/country.html')
+
+
+@login_required
+def info_page(request):
+    return render(request, 'registration/info.html')
+
+
+@login_required
+def contact_page(request):
+    return render(request, 'registration/contact.html')

@@ -24,3 +24,4 @@ class FinalTableAll(models.Model):
     entity = models.CharField(max_length=100)
     date = models.CharField(max_length=30)
     semantic_compound = models.DecimalField(max_digits=6, decimal_places=5)
+    tweet_count = models.IntegerField(default=0)

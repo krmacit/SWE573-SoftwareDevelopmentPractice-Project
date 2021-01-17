@@ -40,13 +40,14 @@ def generate_final_table(request):
     delete_everything_from_final_table()
     entities = get_top_100_entities()
     for entity in entities:
-        for date in set(TweetSummary.objects.filter(entity=entity[0]).values_list('date')):
+        for current_date in set(TweetSummary.objects.filter(entity=entity[0]).values_list('date')):
             final_row = FinalTableAll(
                 entity=entity[0],
-                date=date,
-                semantic_compound=
-                TweetSummary.objects.all().filter(entity=entity[0]).aggregate(Avg('semantic_compound'))[
-                    'semantic_compound__avg']
+                date=current_date[0],
+                semantic_compound=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                    date=current_date[0]).aggregate(Avg('semantic_compound'))['semantic_compound__avg'],
+                tweet_count=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                    date=current_date[0]).aggregate(Count("entity"))['entity__count']
             )
             final_row.save()
     return HttpResponse("Country info will be added to summary using opencagedata..")

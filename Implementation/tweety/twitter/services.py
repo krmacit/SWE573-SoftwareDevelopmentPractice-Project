@@ -47,7 +47,7 @@ def get_stream(base_url, headers, params):
     iteration = 0
     while 'next_token' in response_json['meta'] and response_json['meta']['next_token'] is not None and iteration < 1:
         print(response_json['meta'])
-        iteration += 1
+        # iteration += 1
         params['next_token'] = response_json['meta']['next_token']
         response = requests.get(
             base_url, headers=headers, params=params
