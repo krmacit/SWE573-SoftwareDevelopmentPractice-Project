@@ -11,6 +11,8 @@ class TweetSummary(models.Model):
     semantic_compound = models.DecimalField(null=True, max_digits=6, decimal_places=4)
     location = models.CharField(max_length=50, null=True)
     country_code = models.CharField(null=True, max_length=3)
+    country = models.CharField(null=True, max_length=25)
+    continent = models.CharField(null=True, max_length=15)
 
 
 class FinalTable(models.Model):

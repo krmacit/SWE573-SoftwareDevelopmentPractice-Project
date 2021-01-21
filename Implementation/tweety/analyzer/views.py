@@ -3,8 +3,9 @@ import nltk
 from django.db.models import Count, Avg
 from django.http import HttpResponse
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from opencage.geocoder import OpenCageGeocode, RateLimitExceededError
 
-from analyzer.models import TweetSummary, FinalTable, FinalTableAll
+from analyzer.models import TweetSummary, FinalTableAll
 from twitter.models import Tweet, Entities
 
 
@@ -33,7 +34,22 @@ def analyzer(request):
 
 
 def add_country(request):
-    return HttpResponse("Country info will be added to summary using opencagedata..")
+    key = '9ef7cd1fb7154263b30d1222657ae2d4'
+    geocoder = OpenCageGeocode(key)
+    for tweetSummary in TweetSummary.objects.all():
+        if tweetSummary.country is None and tweetSummary.location is not None:
+            try:
+                results = geocoder.geocode(tweetSummary.location)
+                if len(results) > 0 and 'components' in results[0] and 'country' in results[0]['components']:
+                    tweetSummary.country = results[0]['components']['country']
+                    tweetSummary.country_code = results[0]['components']['country_code']
+                    tweetSummary.continent = results[0]['components']['continent']
+                else:
+                    tweetSummary.location = None
+                tweetSummary.save()
+            except RateLimitExceededError as ex:
+                print(ex)
+    return HttpResponse("Country info will be added to summary using open cage data..")
 
 
 def generate_final_table(request):
@@ -50,7 +66,7 @@ def generate_final_table(request):
                     date=current_date[0]).aggregate(Count("entity"))['entity__count']
             )
             final_row.save()
-    return HttpResponse("Country info will be added to summary using opencagedata..")
+    return HttpResponse("Final Table are regenerated..")
 
 
 def delete_everything_from_final_table():
