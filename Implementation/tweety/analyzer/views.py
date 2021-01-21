@@ -54,10 +54,10 @@ def generate_final_table(request):
 
 
 def delete_everything_from_final_table():
-    FinalTable.objects.all().delete()
+    FinalTableAll.objects.all().delete()
 
 
 def get_top_100_entities():
     entity_list = TweetSummary.objects.values_list('entity').annotate(entity_count=Count('entity')) \
         .order_by('-entity_count')
-    return entity_list[:100]
+    return entity_list[:25]
