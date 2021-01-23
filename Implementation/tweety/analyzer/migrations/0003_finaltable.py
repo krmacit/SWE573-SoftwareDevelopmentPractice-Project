@@ -14,7 +14,6 @@ class Migration(migrations.Migration):
             name='FinalTable',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('country_code', models.CharField(max_length=3, null=True)),
                 ('entity', models.CharField(max_length=100)),
                 ('date', models.DateField()),
                 ('semantic_compound', models.DecimalField(decimal_places=4, max_digits=6, null=True)),

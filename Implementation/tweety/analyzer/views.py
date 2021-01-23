@@ -77,3 +77,11 @@ def get_top_100_entities():
     entity_list = TweetSummary.objects.values_list('entity').annotate(entity_count=Count('entity')) \
         .order_by('-entity_count')
     return entity_list[:25]
+
+
+def generate_region_final_table(request):
+    return None
+
+
+def delete_everything_from_region_final_table():
+    FinalTableAll.objects.all().delete()
