@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Country View</title>
+    <title>Tweety</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/main/css/style.css">
+    <link rel="stylesheet" href="../../static/tweety/css/style.css">
 </head>
 <body>
 
@@ -21,12 +21,12 @@
             </button>
         </div>
         <div class="p-4">
-            <h1><a href="{% url 'login' %}" class="logo">Tweety</a></h1>
+            <h1><a href="{% url 'home' %}" class="logo">Tweety</a></h1>
             <ul class="list-unstyled components mb-5">
-                <li class="active">
-                    <a href="{% url 'home' %}"><span class="fa fa-home mr-3"></span> Home</a>
-                </li>
                 <li>
+                    <a href={% url 'home' %}><span class="fa fa-home mr-3"></span> Home</a>
+                </li>
+                <li class="active">
                     <a href="#"><span class="fa fa-user mr-3"></span> Country Selection</a>
                 </li>
                 <li>
@@ -53,14 +53,152 @@
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Country View</h2>
-        <p>Here will be country chart.</p>
+        <h2 class="mb-4">HeatMaps</h2>
+        <p>Corona related tweets are gathered with broad search term. The gathered tweet semantic results are calculated
+            using NLTK library.</p>
+        <p>The graphs show entity attributes. In the first chart, number of tweet in which the entity included are shown
+            in the daily basis. In the second graph, the average result of these tweets are shown in order to express
+            general semantic opinion of these concepts.</p>
+        <div id="occurrence_graph_container" class="graphs" style="height: 100%"></div>
+        <div id="spacing" style="height: 25px"></div>
+        <div id="semantic_graph_container" class="graphs" style="height: 100%"></div>
     </div>
 </div>
 
-<script src="../../static/main/js/jquery.min.js"></script>
-<script src="../../static/main/js/popper.js"></script>
-<script src="../../static/main/js/bootstrap.min.js"></script>
-<script src="../../static/main/js/main.js"></script>
+<script src="../../static/tweety/js/jquery.min.js"></script>
+<script src="../../static/tweety/js/popper.js"></script>
+<script src="../../static/tweety/js/bootstrap.min.js"></script>
+<script src="../../static/tweety/js/main.js"></script>
+<script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-heatmap.min.js"></script>
+<script>
+    anychart.onDocumentReady(function () {
+        // create the data
+        var occ_data = {{ occurrence_data|safe }};
+        drawChart(occ_data, "occurrence_graph_container", true)
+
+
+        var sem_data = {{ semantic_data|safe }};
+        drawChart(sem_data, "semantic_graph_container", false)
+
+    });
+
+    function drawChart(data, id, type) {
+        var chart = anychart.heatMap(data);
+
+        var colorScale = anychart.scales.ordinalColor();
+        // set color for all points
+        if (type) {
+            colorScale.ranges([
+                {less: 1, color: '#e3f2fd'},
+                {from: 1, to: 3, color: '#D3EDFC'},
+                {from: 3, to: 5, color: '#BEE7FC'},
+                {from: 5, to: 9, color: '#aee2fb'},
+                {from: 9, to: 15, color: '#B3B0D3'},
+                {from: 15, to: 30, color: '#B691BB'},
+                {from: 30, to: 50, color: '#B973A3'},
+                {from: 50, to: 80, color: '#BC558B'},
+                {from: 80, to: 100, color: '#BF3673'},
+                {greater: 100, color: '#c2185b'}
+            ])
+        } else {
+            colorScale.ranges([
+                {less: -0.7, color: '#e3f2fd'},
+                {from: -0.7, to: -0.55, color: '#D3EDFC'},
+                {from: -0.55, to: -0.4, color: '#BEE7FC'},
+                {from: -0.4, to: -0.2, color: '#aee2fb'},
+                {from: -0.2, to: 0, color: '#B3B0D3'},
+                {from: 0, to: 0.2, color: '#B691BB'},
+                {from: 0.2, to: 0.4, color: '#B973A3'},
+                {from: 0.4, to: 0.55, color: '#BC558B'},
+                {from: 0.55, to: 0.7, color: '#BF3673'},
+                {greater: 0.7, color: '#c2185b'}
+            ])
+        }
+
+        chart.colorScale(colorScale);
+
+        // Sets selection mode for single selection
+        chart.interactivity().selectionMode('none');
+
+        chart.padding([10, 20, 10, 20]);
+
+        if (type) {
+            chart
+                .title()
+                .useHtml(true)
+                .enabled(true)
+                .padding([0, 0, 10, 5])
+                .align('left')
+                .text(
+                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Daily Counts)</span>'
+                );
+        } else {
+            chart
+                .title()
+                .useHtml(true)
+                .enabled(true)
+                .padding([0, 0, 10, 5])
+                .align('left')
+                .text(
+                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Semantic Result)</span>'
+                );
+        }
+
+        // Sets chart labels
+        {#chart#}
+        {#    .labels()#}
+        {#    .enabled(true)#}
+        {#    .maxFontSize(14)#}
+        {#    .format(function () {#}
+        {#        return this.x + this.y + this.getData('symbol');#}
+        {#    });#}
+
+        // Turns off axes
+        chart
+            // Sets chart and hover chart settings
+            .stroke('#fff');
+        chart
+            .hovered()
+            .stroke('6 #fff')
+            .fill('#545f69')
+            .labels({fontColor: '#fff'});
+
+        // Sets legend
+        chart
+            .legend()
+            .enabled(true)
+            .align('top')
+            .position('right')
+            .itemsLayout('vertical')
+            .padding([2, 10, 0, 20]);
+
+        // Sets tooltip
+        if (type) {
+            chart
+                .tooltip()
+                .titleFormat(function () {
+                    return this.y + " - " + this.x;
+                })
+                .format(function () {
+                    return 'Count: ' + this.heat;
+                });
+        } else {
+            chart
+                .tooltip()
+                .titleFormat(function () {
+                    return this.y;
+                })
+                .format(function () {
+                    return 'Result: ' + this.heat;
+                });
+        }
+
+        chart.height("1500px");
+
+        chart.container(id);
+        chart.draw();
+    }
+</script>
 </body>
 </html>

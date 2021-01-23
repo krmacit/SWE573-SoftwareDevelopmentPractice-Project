@@ -36,9 +36,9 @@ def analyzer(request):
 def add_country(request):
     key = '9ef7cd1fb7154263b30d1222657ae2d4'
     geocoder = OpenCageGeocode(key)
-    for tweetSummary in TweetSummary.objects.all():
-        if tweetSummary.country is None and tweetSummary.location is not None:
-            try:
+    try:
+        for tweetSummary in TweetSummary.objects.all():
+            if tweetSummary.country is None and tweetSummary.location is not None:
                 results = geocoder.geocode(tweetSummary.location)
                 if len(results) > 0 and 'components' in results[0] and 'country' in results[0]['components']:
                     tweetSummary.country = results[0]['components']['country']
@@ -47,8 +47,8 @@ def add_country(request):
                 else:
                     tweetSummary.location = None
                 tweetSummary.save()
-            except RateLimitExceededError as ex:
-                print(ex)
+    except RateLimitExceededError as ex:
+        print(ex)
     return HttpResponse("Country info will be added to summary using open cage data..")
 
 

@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Information</title>
+    <title>Tweety</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/main/css/style.css">
+    <link rel="stylesheet" href="../../static/tweety/css/style.css">
 </head>
 <body>
 
@@ -21,15 +21,15 @@
             </button>
         </div>
         <div class="p-4">
-            <h1><a href="{% url 'login' %}" class="logo">Tweety</a></h1>
+            <h1><a href="{% url 'home' %}" class="logo">Tweety</a></h1>
             <ul class="list-unstyled components mb-5">
-                <li class="active">
+                <li>
                     <a href="{% url 'home' %}"><span class="fa fa-home mr-3"></span> Home</a>
                 </li>
                 <li>
                     <a href="{% url 'country' %}"><span class="fa fa-user mr-3"></span> Country Selection</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="#"><span class="fa fa-briefcase mr-3"></span> About</a>
                 </li>
                 <li>
@@ -53,17 +53,16 @@
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Info</h2>
+        <h2 class="mb-4">Information</h2>
         <p>This page is create for SWE 573 Term Project.</p>
         <p></p>
         <p>Info will be added to here.</p>
-        <canvas class="heat-map"></canvas>
     </div>
 </div>
 
-<script src="../../static/main/js/jquery.min.js"></script>
-<script src="../../static/main/js/popper.js"></script>
-<script src="../../static/main/js/bootstrap.min.js"></script>
-<script src="../../static/main/js/main.js"></script>
+<script src="../../static/tweety/js/jquery.min.js"></script>
+<script src="../../static/tweety/js/popper.js"></script>
+<script src="../../static/tweety/js/bootstrap.min.js"></script>
+<script src="../../static/tweety/js/main.js"></script>
 </body>
 </html>

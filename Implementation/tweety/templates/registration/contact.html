@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Contact Information</title>
+    <title>Tweety</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/main/css/style.css">
+    <link rel="stylesheet" href="../../static/tweety/css/style.css">
 </head>
 <body>
 
@@ -21,18 +21,18 @@
             </button>
         </div>
         <div class="p-4">
-            <h1><a href="{% url 'login' %}" class="logo">Tweety</a></h1>
+            <h1><a href="{% url 'home' %}" class="logo">Tweety</a></h1>
             <ul class="list-unstyled components mb-5">
-                <li class="active">
+                <li>
                     <a href="{% url 'home' %}"><span class="fa fa-home mr-3"></span> Home</a>
                 </li>
                 <li>
                     <a href="{% url 'country' %}"><span class="fa fa-user mr-3"></span> Country Selection</a>
                 </li>
-                <li>
+                <li >
                     <a href="{% url 'info' %}"><span class="fa fa-briefcase mr-3"></span> About</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contact</a>
                 </li>
                 <li>
@@ -53,7 +53,7 @@
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">HeatMap Graph</h2>
+        <h2 class="mb-4">Contact Information</h2>
         Written by <a href="mailto:krmacit@hotmail.com">Kerim Can Macit</a>.<br>
         Visit us at: <a href="https://www.cmpe.boun.edu.tr/tr/graduate/swe">Boun SWE</a><br>
         Istanbul<br>
@@ -61,9 +61,9 @@
     </div>
 </div>
 
-<script src="../../static/main/js/jquery.min.js"></script>
-<script src="../../static/main/js/popper.js"></script>
-<script src="../../static/main/js/bootstrap.min.js"></script>
-<script src="../../static/main/js/main.js"></script>
+<script src="../../static/tweety/js/jquery.min.js"></script>
+<script src="../../static/tweety/js/popper.js"></script>
+<script src="../../static/tweety/js/bootstrap.min.js"></script>
+<script src="../../static/tweety/js/main.js"></script>
 </body>
 </html>
