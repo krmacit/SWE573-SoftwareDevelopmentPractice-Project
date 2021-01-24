@@ -29,7 +29,7 @@ def home(request):
         semantic_data.append({'x': row.date, 'y': row.entity, 'heat': str(row.semantic_compound)})
         occurrence_data.append({'x': row.date, 'y': row.entity, 'heat': row.tweet_count})
 
-    return render(request, 'registration/index.html', {
+    return render(request, 'tweety/index.html', {
         'semantic_data': semantic_data,
         'occurrence_data': occurrence_data
     })
@@ -43,7 +43,7 @@ def country_page(request):
         semantic_data.append({'region': row.region, 'x': row.date, 'y': row.entity, 'heat': str(row.semantic_compound)})
         occurrence_data.append({'region': row.region, 'x': row.date, 'y': row.entity, 'heat': row.tweet_count})
 
-    return render(request, 'registration/country.html', {
+    return render(request, 'tweety/country.html', {
         'semantic_data': semantic_data,
         'occurrence_data': occurrence_data
     })
@@ -51,9 +51,9 @@ def country_page(request):
 
 @login_required
 def info_page(request):
-    return render(request, 'registration/info.html')
+    return render(request, 'tweety/info.html')
 
 
 @login_required
 def contact_page(request):
-    return render(request, 'registration/contact.html')
+    return render(request, 'tweety/contact.html')
