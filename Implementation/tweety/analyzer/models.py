@@ -18,8 +18,8 @@ class TweetSummary(models.Model):
 class FinalTable(models.Model):
     region = models.CharField(null=True, max_length=25)
     entity = models.CharField(max_length=100)
-    date = models.DateField()
-    semantic_compound = models.DecimalField(null=True, max_digits=6, decimal_places=4)
+    date = models.CharField(max_length=30)
+    semantic_compound = models.DecimalField(default=0, max_digits=6, decimal_places=4)
     tweet_count = models.IntegerField(default=0)
 
 

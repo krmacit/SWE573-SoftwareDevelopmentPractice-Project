@@ -60,8 +60,9 @@
             in the daily basis. In the second graph, the average result of these tweets are shown in order to express
             general semantic opinion of these concepts.</p>
         <div id="occurrence_graph_container" class="graphs" style="height: 100%"></div>
-        <div id="spacing" style="height: 25px"></div>
+        <div id="spacing" style="height: 775px"></div>
         <div id="semantic_graph_container" class="graphs" style="height: 100%"></div>
+        <div id="spacing" style="height: 25px"></div>
     </div>
 </div>
 
@@ -74,16 +75,12 @@
 <script>
     anychart.onDocumentReady(function () {
         // create the data
-        var occ_data = {{ occurrence_data|safe }};
-        drawChart(occ_data, "occurrence_graph_container", true)
-
-
-        var sem_data = {{ semantic_data|safe }};
-        drawChart(sem_data, "semantic_graph_container", false)
-
+        drawChart({{ occurrence_data|safe }}, "occurrence_graph_container", true)
+        drawChart({{ semantic_data|safe }}, "semantic_graph_container", false)
     });
 
     function drawChart(data, id, type) {
+        console.log(data)
         var chart = anychart.heatMap(data);
 
         var colorScale = anychart.scales.ordinalColor();
@@ -194,7 +191,7 @@
                 });
         }
 
-        chart.height("1500px");
+        chart.height(750);
 
         chart.container(id);
         chart.draw();

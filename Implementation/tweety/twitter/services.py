@@ -1,6 +1,7 @@
 from datetime import datetime
 
 import requests
+from django.db.models import Max
 
 from twitter.models import TwitterUser, ContextAnnotation, Tweet, Entities
 
@@ -23,13 +24,15 @@ def create_headers(bearer_token):
 
 
 def create_params():
+    highest_id = Tweet.objects.aggregate(Max('id'))
     params = {
         'max_results': 100,
         'query': 'corona pandemic is:retweet lang:en has:mentions',
         'expansions': 'referenced_tweets.id,referenced_tweets.id.author_id,geo.place_id',
         'tweet.fields': 'public_metrics,geo,context_annotations,entities,created_at',
         'user.fields': 'location',
-        'place.fields': 'country_code'
+        'place.fields': 'country_code',
+        'since_id': highest_id['id__max']
     }
     return params
 
@@ -88,12 +91,14 @@ def handle_response(response_json):
                     tweet_id=Tweet.objects.get(id=tweet['id']),
                     domain_id=int(context_annotations['domain']['id']),
                     domain_name=context_annotations['domain']['name'][0:49],
-                    domain_description=context_annotations['domain']['description'][0:49] if 'description' in context_annotations[
-                        'domain'] else None,
+                    domain_description=context_annotations['domain']['description'][0:49] if 'description' in
+                                                                                             context_annotations[
+                                                                                                 'domain'] else None,
                     entity_id=int(context_annotations['entity']['id']),
                     entity_name=context_annotations['entity']['name'][0:49],
-                    entity_description=context_annotations['entity']['description'][0:49] if 'context_annotations' in context_annotations[
-                        'entity'] else None
+                    entity_description=context_annotations['entity']['description'][0:49] if 'context_annotations' in
+                                                                                             context_annotations[
+                                                                                                 'entity'] else None
                 )
                 context_annotation.save()
         if 'entities' in tweet:

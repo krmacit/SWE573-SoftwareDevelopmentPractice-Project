@@ -60,7 +60,7 @@
             in the daily basis. In the second graph, the average result of these tweets are shown in order to express
             general semantic opinion of these concepts.</p>
         <div id="occurrence_graph_container" class="graphs" style="height: 100%"></div>
-        <div id="spacing" style="height: 25px"></div>
+        <div id="spacing" style="height: 775px"></div>
         <div id="semantic_graph_container" class="graphs" style="height: 100%"></div>
     </div>
 </div>
@@ -74,14 +74,25 @@
 <script>
     anychart.onDocumentReady(function () {
         // create the data
-        var occ_data = {{ occurrence_data|safe }};
-        drawChart(occ_data, "occurrence_graph_container", true)
-
-
-        var sem_data = {{ semantic_data|safe }};
-        drawChart(sem_data, "semantic_graph_container", false)
-
+        createChart()
     });
+
+    function createChart() {
+        let occ_data = getRegionData({{ occurrence_data|safe }}, "Europe");
+        drawChart(occ_data, "occurrence_graph_container", true)
+        drawChart(getRegionData({{ semantic_data|safe }}, "Europe"), "semantic_graph_container", false)
+    }
+
+    function getRegionData(data, region) {
+        console.log(data)
+        let filtered = data.filter(function (d) {return d.region === region});
+        console.log(filtered)
+        return filtered
+    }
+
+    function checkAdult(age) {
+        return age >= 18;
+    }
 
     function drawChart(data, id, type) {
         var chart = anychart.heatMap(data);
@@ -194,7 +205,7 @@
                 });
         }
 
-        chart.height("1500px");
+        chart.height(750);
 
         chart.container(id);
         chart.draw();

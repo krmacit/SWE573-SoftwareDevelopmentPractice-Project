@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from analyzer.models import FinalTableAll
+from analyzer.models import FinalTableAll, FinalTable
 
 
 def register(request):
@@ -37,7 +37,16 @@ def home(request):
 
 @login_required
 def country_page(request):
-    return render(request, 'registration/country.html')
+    semantic_data = []
+    occurrence_data = []
+    for row in FinalTable.objects.all().order_by('date', '-tweet_count'):
+        semantic_data.append({'region': row.region, 'x': row.date, 'y': row.entity, 'heat': str(row.semantic_compound)})
+        occurrence_data.append({'region': row.region, 'x': row.date, 'y': row.entity, 'heat': row.tweet_count})
+
+    return render(request, 'registration/country.html', {
+        'semantic_data': semantic_data,
+        'occurrence_data': occurrence_data
+    })
 
 
 @login_required

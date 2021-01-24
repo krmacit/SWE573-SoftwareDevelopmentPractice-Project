@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from opencage.geocoder import OpenCageGeocode, RateLimitExceededError
 
-from analyzer.models import TweetSummary, FinalTableAll
+from analyzer.models import TweetSummary, FinalTableAll, FinalTable
 from twitter.models import Tweet, Entities
 
 
@@ -54,7 +54,7 @@ def add_country(request):
 
 def generate_final_table(request):
     delete_everything_from_final_table()
-    entities = get_top_100_entities()
+    entities = get_top_entities()
     for entity in entities:
         for current_date in set(TweetSummary.objects.filter(entity=entity[0]).values_list('date')):
             final_row = FinalTableAll(
@@ -73,15 +73,34 @@ def delete_everything_from_final_table():
     FinalTableAll.objects.all().delete()
 
 
-def get_top_100_entities():
+def get_top_entities():
     entity_list = TweetSummary.objects.values_list('entity').annotate(entity_count=Count('entity')) \
         .order_by('-entity_count')
     return entity_list[:25]
 
 
 def generate_region_final_table(request):
-    return None
+    delete_everything_from_region_final_table()
+    entities = get_top_entities()
+    for entity in entities:
+        for current_date in set(TweetSummary.objects.filter(entity=entity[0]).values_list('date')):
+            for current_region in get_regions():
+                final_row = FinalTable(
+                    entity=entity[0],
+                    date=current_date[0],
+                    region=current_region,
+                    semantic_compound=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                        date=current_date[0]).filter(continent=current_region).aggregate(Avg('semantic_compound'))['semantic_compound__avg'],
+                    tweet_count=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                        date=current_date[0]).filter(continent=current_region).aggregate(Count("entity"))['entity__count']
+                )
+                final_row.save()
+    return HttpResponse("Final Table are regenerated..")
+
+
+def get_regions():
+    return ["Africa", "Asia", "Europe", "North America", "Oceania", "South America"]
 
 
 def delete_everything_from_region_final_table():
-    FinalTableAll.objects.all().delete()
+    FinalTable.objects.all().delete()
