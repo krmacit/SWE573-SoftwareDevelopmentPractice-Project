@@ -1,61 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tweety Login Page</title>
+    <title>Login V9</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="../../static/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../../static/login/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="../../static/login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../../static/login/css/main.css">
+    <!--===============================================================================================-->
 </head>
-<body style="background-color: #666666;">
+<body>
 
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <form class="login100-form validate-form" method="post" action="{% url 'login' %}">
-                <div class="row">
-                    <div class="col-md-6 offset-md-3 mt-3">
-                        <form method="post" action="{% url 'login' %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {{ form.username.label_tag }}
-                                <input
-                                        type="text"
-                                        name="username"
-                                        class="form-control"
-                                        maxlength="150"
-                                        id="id_username"
-                                        required
-                                />
-                            </div>
-                            <div class="form-group">
-                                {{ form.password.label_tag }}
-                                <input
-                                        type="password"
-                                        name="password"
-                                        class="form-control"
-                                        id="id_password"
-                                        required
-                                />
-                            </div>
-                            {% if form.non_field_errors %} {% for error in form.non_field_errors %}
-                                <p style="font-size: 13px;">
-                                    {{ error|escape }}
-                                </p>
-                            {% endfor %} {% endif %}
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </form>
-                        <form method="get" action="{% url 'register' %}">
-                            <button type="submit" value="Register" class="btn btn-primary"
-                                   name="Submit" id="Register">Register</button>
-                        </form>
-                    </div>
-                </div>
 
-            </form>
-            <div class="login100-more" style="background-image: url('../../static/images/bg-01.jpg');">
+<div class="container-login100" style="background-image: url('../../static/login/images/bg-01.jpg');">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+        <form class="login100-form validate-form" method="post" action="{% url 'login' %}">
+            <span class="login100-form-title p-b-25">
+                Sign In
+            </span>
+
+            {% csrf_token %}
+            <div class="form-group">
+
+                {{ form.username.label_tag }}
+                <input
+                        type="text"
+                        name="username"
+                        class="form-control"
+                        maxlength="150"
+                        id="id_username"
+                        required
+                />
             </div>
-        </div>
+            {{ form.password.label_tag }}
+            <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="id_password"
+                    required
+            />
+
+            <div></div>
+
+            {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+                <p style="font-size: 13px;">
+                    {{ error|escape }}
+                </p>
+            {% endfor %} {% endif %}
+            <button type="submit" class="btn btn-primary mt-2">Login</button>
+
+            <div class="text-center">
+                <a href="{% url 'register' %}" class="txt2 hov1">
+                    Sign Up
+                </a>
+            </div>
+        </form>
+
+
     </div>
 </div>
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="../../static/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/login/vendor/bootstrap/js/popper.js"></script>
+<script src="../../static/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="../../static/login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/login/js/main.js"></script>
+
 </body>
 </html>
