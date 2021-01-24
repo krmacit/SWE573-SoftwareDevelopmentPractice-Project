@@ -104,3 +104,10 @@ def get_regions():
 
 def delete_everything_from_region_final_table():
     FinalTable.objects.all().delete()
+
+
+def remove_any_duplicates_in_summary(request):
+    for row in TweetSummary.objects.all():
+        if TweetSummary.objects.filter(tweet_id=row.tweet_id).filter(entity=row.entity).count() > 1:
+            row.delete()
+    return HttpResponse("Summary duplicates are removed..")

@@ -20,4 +20,4 @@ def remove_any_duplicates_in_tweets(request):
     for row in Entities.objects.all().reverse():
         if Entities.objects.filter(tweet_id_id=row.tweet_id_id).filter(normalized_text=row.normalized_text).count() > 1:
             row.delete()
-    return HttpResponse("Calls will be stopped..")
+    return HttpResponse("Tweet duplicates are removed..")
