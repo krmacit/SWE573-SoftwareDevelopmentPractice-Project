@@ -34,6 +34,10 @@ def analyzer(request):
 
 
 def add_country(request):
+    return add_country_info_from_geocode()
+
+
+def add_country_info_from_geocode():
     key = '9ef7cd1fb7154263b30d1222657ae2d4'
     geocoder = OpenCageGeocode(key)
     try:
@@ -60,6 +64,12 @@ def generate_final_table(request):
             final_row = FinalTableAll(
                 entity=entity[0],
                 date=current_date[0],
+                semantic_neg=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                    date=current_date[0]).aggregate(Avg('semantic_neg'))['semantic_neg__avg'],
+                semantic_pos=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                    date=current_date[0]).aggregate(Avg('semantic_pos'))['semantic_pos__avg'],
+                semantic_neu=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                    date=current_date[0]).aggregate(Avg('semantic_neu'))['semantic_neu__avg'],
                 semantic_compound=TweetSummary.objects.all().filter(entity=entity[0]).filter(
                     date=current_date[0]).aggregate(Avg('semantic_compound'))['semantic_compound__avg'],
                 tweet_count=TweetSummary.objects.all().filter(entity=entity[0]).filter(
@@ -89,10 +99,21 @@ def generate_region_final_table(request):
                     entity=entity[0],
                     date=current_date[0],
                     region=current_region,
+                    semantic_neg=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                        date=current_date[0]).filter(continent=current_region).aggregate(Avg('semantic_neg'))[
+                        'semantic_neg__avg'],
+                    semantic_neu=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                        date=current_date[0]).filter(continent=current_region).aggregate(Avg('semantic_neu'))[
+                        'semantic_neu__avg'],
+                    semantic_pos=TweetSummary.objects.all().filter(entity=entity[0]).filter(
+                        date=current_date[0]).filter(continent=current_region).aggregate(Avg('semantic_pos'))[
+                        'semantic_pos__avg'],
                     semantic_compound=TweetSummary.objects.all().filter(entity=entity[0]).filter(
-                        date=current_date[0]).filter(continent=current_region).aggregate(Avg('semantic_compound'))['semantic_compound__avg'],
+                        date=current_date[0]).filter(continent=current_region).aggregate(Avg('semantic_compound'))[
+                        'semantic_compound__avg'],
                     tweet_count=TweetSummary.objects.all().filter(entity=entity[0]).filter(
-                        date=current_date[0]).filter(continent=current_region).aggregate(Count("entity"))['entity__count']
+                        date=current_date[0]).filter(continent=current_region).aggregate(Count("entity"))[
+                        'entity__count']
                 )
                 final_row.save()
     return HttpResponse("Final Table are regenerated..")

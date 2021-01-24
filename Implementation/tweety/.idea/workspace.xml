@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8874c29e-83d0-4180-9404-3ff485c639aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/analyzer/migrations/0013_auto_20210123_2104.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analyzer/migrations/0014_auto_20210124_0929.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analyzer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyzer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyzer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyzer/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyzer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/country.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/country.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +122,7 @@
       <workItem from="1611350890484" duration="943000" />
       <workItem from="1611387517795" duration="21134000" />
       <workItem from="1611474935933" duration="5730000" />
-      <workItem from="1611481396123" duration="8819000" />
+      <workItem from="1611481396123" duration="11812000" />
     </task>
     <task id="LOCAL-00001" summary="removed unnecessary files">
       <created>1611350451857</created>
@@ -147,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611512262946</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Duplicates are removed in the final models.">
+      <created>1611512667615</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611512667615</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +170,8 @@
     <MESSAGE value="Frontend revised. Login &amp; register pages requires additional refactors." />
     <MESSAGE value="Final table is refactored to final style." />
     <MESSAGE value="Some refactors are made. Country page structure is added to backend. Duplicates are removed in the tweet models." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some refactors are made. Country page structure is added to backend. Duplicates are removed in the tweet models." />
+    <MESSAGE value="Duplicates are removed in the final models." />
+    <option name="LAST_COMMIT_MESSAGE" value="Duplicates are removed in the final models." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

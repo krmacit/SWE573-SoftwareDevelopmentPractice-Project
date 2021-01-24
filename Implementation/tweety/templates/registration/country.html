@@ -27,7 +27,7 @@
                     <a href={% url 'home' %}><span class="fa fa-home mr-3"></span> Home</a>
                 </li>
                 <li class="active">
-                    <a href="#"><span class="fa fa-user mr-3"></span> Country Selection</a>
+                    <a href="#"><span class="fa fa-user mr-3"></span> Region Selection</a>
                 </li>
                 <li>
                     <a href="{% url 'info' %}"><span class="fa fa-briefcase mr-3"></span> About</a>
@@ -53,7 +53,7 @@
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">HeatMaps</h2>
+        <h2 class="mb-4">HeatMaps - Regional Basis</h2>
         <p>Corona related tweets are gathered with broad search term. The gathered tweet semantic results are calculated
             using NLTK library.</p>
         <p>The graphs show entity attributes. In the first chart, number of tweet in which the entity included are shown
@@ -152,7 +152,7 @@
                 .padding([0, 0, 10, 5])
                 .align('left')
                 .text(
-                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Semantic Result)</span>'
+                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Sentiment Result)</span>'
                 );
         }
 
