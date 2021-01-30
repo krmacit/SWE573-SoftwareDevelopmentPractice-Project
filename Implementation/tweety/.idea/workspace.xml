@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8874c29e-83d0-4180-9404-3ff485c639aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweety/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweety/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="8874c29e-83d0-4180-9404-3ff485c639aa" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +124,7 @@
       <workItem from="1611577254988" duration="1097000" />
       <workItem from="1611771201723" duration="2982000" />
       <workItem from="1611998357786" duration="4090000" />
-      <workItem from="1612023460819" duration="6596000" />
+      <workItem from="1612023460819" duration="6940000" />
     </task>
     <task id="LOCAL-00001" summary="removed unnecessary files">
       <created>1611350451857</created>
