@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8874c29e-83d0-4180-9404-3ff485c639aa" name="Default Changelist" comment="Frontend for login and register are refactored to final.">
+    <list default="true" id="8874c29e-83d0-4180-9404-3ff485c639aa" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/bin/Activate.ps1" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/bin/activate" afterDir="false" />
@@ -684,7 +684,7 @@
       <workItem from="1611577254988" duration="1097000" />
       <workItem from="1611771201723" duration="2982000" />
       <workItem from="1611998357786" duration="4090000" />
-      <workItem from="1612023460819" duration="2137000" />
+      <workItem from="1612023460819" duration="2456000" />
     </task>
     <task id="LOCAL-00001" summary="removed unnecessary files">
       <created>1611350451857</created>
@@ -757,7 +757,8 @@
     <MESSAGE value="Final tables are recreated with pos neg sentiment results" />
     <MESSAGE value="The frontend file structure is refactored" />
     <MESSAGE value="Frontend for login and register are refactored to final." />
-    <option name="LAST_COMMIT_MESSAGE" value="Frontend for login and register are refactored to final." />
+    <MESSAGE value="virtualenv is added to project." />
+    <option name="LAST_COMMIT_MESSAGE" value="virtualenv is added to project." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
