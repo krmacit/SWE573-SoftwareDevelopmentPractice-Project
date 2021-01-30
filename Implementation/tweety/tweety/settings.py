@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'tweety.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tweety_db',
+        'NAME': 'tweety_live',
         'USER': 'postgres',
-        'PASSWORD': '899091',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '899091Aysa',
+        'HOST': 'tweetydb.cjybiw2fzrub.eu-central-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
