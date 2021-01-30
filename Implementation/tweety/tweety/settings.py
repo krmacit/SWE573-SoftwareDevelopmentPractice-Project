@@ -134,7 +134,7 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-ALLOWED_HOSTS = ['tweety-swe-boun.herokuapp.com/',
-                 '127.0.0.1',
-                 '0.0.0.0']
+#
+# ALLOWED_HOSTS = ['tweety-swe-boun.herokuapp.com/',
+#                  '127.0.0.1',
+#                  '0.0.0.0']
