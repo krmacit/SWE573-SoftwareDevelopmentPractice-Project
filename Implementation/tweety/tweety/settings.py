@@ -138,4 +138,4 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 ALLOWED_HOSTS = ['127.0.0.1',
                  '0.0.0.0',
                  'localhost',
-                 'tweety-swe-boun.herokuapp.com']
+                 'ec2-18-198-208-87.eu-central-1.compute.amazonaws.com']
