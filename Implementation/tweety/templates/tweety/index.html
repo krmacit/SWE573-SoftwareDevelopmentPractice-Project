@@ -54,11 +54,21 @@
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">HeatMaps</h2>
-        <p>Corona related tweets are gathered with broad search term. The gathered tweet sentiment results are calculated
+        <p>Corona related tweets are gathered with broad search term. The gathered tweet sentiment results are
+            calculated
             using NLTK library.</p>
         <p>The graphs show entity attributes. In the first chart, number of tweet in which the entity included are shown
             in the daily basis. In the second graph, the average result of these tweets are shown in order to express
             general sentiment opinion of these concepts.</p>
+        <form action="/home">
+            <label for="sentimentType">Choose sentiment result to show:</label>
+            <select name="sentiments" id="resions">
+                <option value="compound_data">Compound</option>
+                <option value="positivity_data">Positive</option>
+                <option value="negativity_data">Negative</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
         <div id="occurrence_graph_container" class="graphs" style="height: 100%; width: 100%"></div>
         <div id="spacing" style="height: 775px"></div>
         <div id="semantic_graph_container" class="graphs" style="height: 100%; width: 100%"></div>
@@ -74,10 +84,25 @@
 <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-heatmap.min.js"></script>
 <script>
     anychart.onDocumentReady(function () {
-        // create the data
-        drawChart({{ occurrence_data|safe }}, "occurrence_graph_container", true)
-        drawChart({{ semantic_data|safe }}, "semantic_graph_container", false)
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("sentiments");
+        if (c == null) {
+            c = "compound_data"
+        }
+        createChart(c)
     });
+
+    function createChart(sentiment) {
+        drawChart({{ occurrence_data|safe }}, "occurrence_graph_container", true)
+        if (sentiment == "compound_data") {
+            drawChart({{ compound_data|safe }}, "semantic_graph_container", false)
+        } else if (sentiment == "positivity_data") {
+            drawChart({{ positivity_data|safe }}, "semantic_graph_container", false)
+        } else if (sentiment == "negativity_data") {
+            drawChart({{ negativity_data|safe }}, "semantic_graph_container", false)
+        }
+    }
 
     function drawChart(data, id, type) {
         console.log(data)

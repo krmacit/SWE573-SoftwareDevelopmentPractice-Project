@@ -25,13 +25,19 @@ def register(request):
 def home(request):
     semantic_data = []
     occurrence_data = []
+    pos_data = []
+    neg_data = []
     for row in FinalTableAll.objects.all().order_by('date', '-tweet_count'):
         semantic_data.append({'x': row.date, 'y': row.entity, 'heat': str(row.semantic_compound)})
         occurrence_data.append({'x': row.date, 'y': row.entity, 'heat': row.tweet_count})
+        pos_data.append({'x': row.date, 'y': row.entity, 'heat': str(row.semantic_pos)})
+        neg_data.append({'x': row.date, 'y': row.entity, 'heat': str(row.semantic_neg)})
 
     return render(request, 'tweety/index.html', {
-        'semantic_data': semantic_data,
-        'occurrence_data': occurrence_data
+        'compound_data': semantic_data,
+        'occurrence_data': occurrence_data,
+        'positivity_data': pos_data,
+        'negativity_data': neg_data
     })
 
 
