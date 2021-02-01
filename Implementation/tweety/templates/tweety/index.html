@@ -54,14 +54,14 @@
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5">
         <h2 class="mb-4">HeatMaps</h2>
-        <p>Corona related tweets are gathered with broad search term. The gathered tweet semantic results are calculated
+        <p>Corona related tweets are gathered with broad search term. The gathered tweet sentiment results are calculated
             using NLTK library.</p>
         <p>The graphs show entity attributes. In the first chart, number of tweet in which the entity included are shown
             in the daily basis. In the second graph, the average result of these tweets are shown in order to express
-            general semantic opinion of these concepts.</p>
-        <div id="occurrence_graph_container" class="graphs" style="height: 100%"></div>
+            general sentiment opinion of these concepts.</p>
+        <div id="occurrence_graph_container" class="graphs" style="height: 100%; width: 100%"></div>
         <div id="spacing" style="height: 775px"></div>
-        <div id="semantic_graph_container" class="graphs" style="height: 100%"></div>
+        <div id="semantic_graph_container" class="graphs" style="height: 100%; width: 100%"></div>
         <div id="spacing" style="height: 25px"></div>
     </div>
 </div>
@@ -87,29 +87,29 @@
         // set color for all points
         if (type) {
             colorScale.ranges([
-                {less: 1, color: '#e3f2fd'},
-                {from: 1, to: 3, color: '#D3EDFC'},
-                {from: 3, to: 5, color: '#BEE7FC'},
-                {from: 5, to: 9, color: '#aee2fb'},
-                {from: 9, to: 15, color: '#B3B0D3'},
-                {from: 15, to: 30, color: '#B691BB'},
-                {from: 30, to: 50, color: '#B973A3'},
-                {from: 50, to: 80, color: '#BC558B'},
-                {from: 80, to: 100, color: '#BF3673'},
-                {greater: 100, color: '#c2185b'}
+                {less: 1, color: '#610606'},
+                {from: 1, to: 3, color: '#b12c2c'},
+                {from: 3, to: 5, color: '#ee5050'},
+                {from: 5, to: 9, color: '#efa5a5'},
+                {from: 9, to: 15, color: '#ffffff'},
+                {from: 15, to: 30, color: '#9dd79a'},
+                {from: 30, to: 50, color: '#7cc777'},
+                {from: 50, to: 80, color: '#56bb4d'},
+                {from: 80, to: 100, color: '#32a82b'},
+                {greater: 100, color: '#15790e'}
             ])
         } else {
             colorScale.ranges([
-                {less: -0.7, color: '#e3f2fd'},
-                {from: -0.7, to: -0.55, color: '#D3EDFC'},
-                {from: -0.55, to: -0.4, color: '#BEE7FC'},
-                {from: -0.4, to: -0.2, color: '#aee2fb'},
-                {from: -0.2, to: 0, color: '#B3B0D3'},
-                {from: 0, to: 0.2, color: '#B691BB'},
-                {from: 0.2, to: 0.4, color: '#B973A3'},
-                {from: 0.4, to: 0.55, color: '#BC558B'},
-                {from: 0.55, to: 0.7, color: '#BF3673'},
-                {greater: 0.7, color: '#c2185b'}
+                {less: -0.7, color: '#610606'},
+                {from: -0.7, to: -0.55, color: '#b12c2c'},
+                {from: -0.55, to: -0.4, color: '#ee5050'},
+                {from: -0.4, to: -0.2, color: '#efa5a5'},
+                {from: -0.2, to: 0, color: '#ffffff'},
+                {from: 0, to: 0.2, color: '#9dd79a'},
+                {from: 0.2, to: 0.4, color: '#7cc777'},
+                {from: 0.4, to: 0.55, color: '#56bb4d'},
+                {from: 0.55, to: 0.7, color: '#32a82b'},
+                {greater: 0.7, color: '#15790e'}
             ])
         }
 
@@ -138,7 +138,7 @@
                 .padding([0, 0, 10, 5])
                 .align('left')
                 .text(
-                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Semantic Result)</span>'
+                    'Tweet Entities <span style=\'font-size: 13px; color:#B9B9B9\'>(Sentiment Result)</span>'
                 );
         }
 

@@ -8294,7 +8294,7 @@ a[data-toggle="collapse"] {
     display: none; } }
 
 #content {
-  width: 100%;
+  min-width: 100vh;
   padding: 0;
   min-height: 100vh;
   -webkit-transition: all 0.3s;
